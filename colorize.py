@@ -87,6 +87,16 @@ def colorize_image(image_path: str, model_path: str = "model.pth", output_path: 
     cv2.imwrite(output_path, cv2.cvtColor(rgb_resized, cv2.COLOR_RGB2BGR))
     print(f"Colorized image saved to: {output_path}")
 
+    # Save grayscale version for comparison
+    base, ext = os.path.splitext(output_path)
+    bw_output_path = f"{base}_bw{ext}"
+    if len(img.shape) == 3:
+        bw_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    else:
+        bw_image = img
+    cv2.imwrite(bw_output_path, bw_image)
+    print(f"Black and white image saved to: {bw_output_path}")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Colorize image using trained colorization model")
