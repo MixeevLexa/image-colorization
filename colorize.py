@@ -74,7 +74,7 @@ def colorize_image(image_path: str, model_path: str = "model.pth", output_path: 
     # Reconstruct LAB → RGB
     l_channel = gray_tensor[0].cpu().numpy() * 100
     ab_channel = ab_pred[0].cpu().numpy() * 255 - 128
-    lab = np.concatenate((l_channel[None, :, :], ab_channel), axis=0).transpose(1, 2, 0)
+    lab = np.concatenate([l_channel[np.newaxis, :, :], ab_channel], axis=0).transpose(1, 2, 0)
     rgb = (lab2rgb(lab) * 255).astype(np.uint8)
 
     # Resize colorized image back to original size
