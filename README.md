@@ -3,6 +3,15 @@
 ## Overview
 This project implements automatic colorization of grayscale images using a convolutional neural network. The model takes a single lightness channel as input and predicts the missing color information in LAB color space, producing a plausible full-color version of the original image.
 
+## Requirements
+
+- PyTorch (>= 1.7.0)
+- Numpy (>= 1.19.3)
+- Matplotlib (>= 3.3.3)
+- Scikit-Image (>= 0.18.3)
+- TorchVision (>= 0.8.1)
+- OpenCV-Python (>= 4.5.4)
+
 ## Model Architecture
 
 ### Color Space Conversion
