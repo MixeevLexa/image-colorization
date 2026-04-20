@@ -94,7 +94,7 @@ def colorize_image(image_path: str, model_path: str = "model.pth", output_path: 
         grayscale_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     else:
         grayscale_image = img
-    cv2.imwrite(output_path_grayscale, bw_image)
+    cv2.imwrite(output_path_grayscale, grayscale_image)
     print(f"Grayscale image saved to: {output_path_grayscale}")
 
 
