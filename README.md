@@ -47,3 +47,21 @@ python colorize.py --image path/to/your_grayscale_image.jpg
 ```
 
 ## Results
+
+### Example 1
+
+| Original | Grayscale | Colorized |
+|:--------:|:---------:|:------------------------:|
+| ![](assets/original1.jpg) | ![](assets/grayscale1.jpg) | ![](assets/colorized1.jpg) |
+
+### Example 2
+
+| Original | Grayscale | Colorized |
+|:--------:|:---------:|:------------------------:|
+| ![](assets/original2.jpg) | ![](assets/grayscale2.jpg) | ![](assets/colorized2.jpg) |
+
+### Example 3
+
+| Original | Grayscale | Colorized |
+|:--------:|:---------:|:------------------------:|
+| ![](assets/original3.jpg) | ![](assets/grayscale3.jpg) | ![](assets/colorized3.jpg) |
