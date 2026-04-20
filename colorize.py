@@ -1,9 +1,48 @@
 import torch
+import torch.nn as nn
+from torchvision import models
 import cv2
 import argparse
 import numpy as np
 from skimage.color import lab2rgb, rgb2gray
 import os
+
+class ColorizationNet(nn.Module):
+    """
+    CNN for image colorization.
+    Encoder: first 6 layers of ResNet34 (adapted for 1-channel grayscale input).
+    Decoder: series of convolutions + upsampling to predict AB channels in LAB color space.
+    """
+    def __init__(self):
+        super(ColorizationNet, self).__init__()
+        resnet = models.resnet34(weights=None)
+        # Adapt first convolution for grayscale (1 channel)
+        resnet.conv1.weight = nn.Parameter(resnet.conv1.weight.sum(dim=1, keepdim=True))
+
+        self.encoder = nn.Sequential(*list(resnet.children())[:6])
+
+        self.decoder = nn.Sequential(
+            nn.Conv2d(128, 128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128), nn.ReLU(inplace=True),
+            nn.Upsample(scale_factor=2),
+            nn.Conv2d(128, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64), nn.ReLU(inplace=True),
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64), nn.ReLU(inplace=True),
+            nn.Upsample(scale_factor=2),
+            nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(32), nn.ReLU(inplace=True),
+            nn.Conv2d(32, 16, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(16), nn.ReLU(inplace=True),
+            nn.Conv2d(16, 2, kernel_size=3, stride=1, padding=1),
+            nn.Upsample(scale_factor=2)
+        )
+
+    def forward(self, x):
+        """Forward pass: grayscale -> predicted AB channels."""
+        x = self.encoder(x)
+        x = self.decoder(x)
+        return x
 
 def colorize_image(image_path: str, model_path: str = "model.pth", output_path: str = "colorized.jpg"):
     """
