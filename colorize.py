@@ -93,4 +93,4 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     
-    colorize_image(args.model, args.image, args.output)
+    colorize_image(args.image, args.model, args.output)
