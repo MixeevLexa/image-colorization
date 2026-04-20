@@ -44,5 +44,6 @@ Run `color.py` with grayscale image that needs to color
 
 ```bash
 python color.py --image path/to/your_grayscale_image.jpg
+```
 
 ## Results
