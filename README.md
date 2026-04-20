@@ -1,7 +1,7 @@
 # Image Colorization
 
 ## Overview
-The project implements an encoder-decoder architecture that takes a single-channel grayscale image as input and outputs the corresponding A and B channels in the LAB color space. The final colorized image is obtained by combining the original lightness channel with the predicted chrominance.
+This project implements automatic colorization of grayscale images using a convolutional neural network. The model takes a single lightness channel as input and predicts the missing color information in LAB color space, producing a plausible full-color version of the original image.
 
 ## Model Architecture
 
@@ -29,22 +29,24 @@ The model is trained on the [Landscape Image Colorization](https://www.kaggle.co
 
 ## Usage
 
-Clone this repository
+Clone the repository and install dependencies
 ```bash
 git clone https://github.com/MixeevLexa/image-colorization.git
 cd image-colorization
-```
-
-Install the required modules
-```bash
 pip install -r requirements.txt
 ```
 
-Run `colorize.py` with grayscale image that needs to color
-
+The `colorize.py` script accepts any image (grayscale or color) and returns its colorized version.
 ```bash
-python colorize.py --image path/to/your_grayscale_image.jpg
+python colorize.py --image path/to/your_image.jpg
 ```
+
+#### Command-line Arguments
+
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `--image` | — | Path to input image (grayscale or color) |
+| `--model` | `model.pth` | Path to pretrained model weights |
 
 ## Results
 
