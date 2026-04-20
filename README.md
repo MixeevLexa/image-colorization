@@ -52,16 +52,16 @@ python colorize.py --image path/to/your_grayscale_image.jpg
 
 | Original | Grayscale | Colorized |
 |:--------:|:---------:|:------------------------:|
-| ![](assets/original1.jpg) | ![](assets/grayscale1.jpg) | ![](assets/colorized1.jpg) |
+| ![](Results/input1.jpeg) | ![](Results/grayscale1.png) | ![](Results/colorized1.png) |
 
 ### Example 2
 
 | Original | Grayscale | Colorized |
 |:--------:|:---------:|:------------------------:|
-| ![](assets/original2.jpg) | ![](assets/grayscale2.jpg) | ![](assets/colorized2.jpg) |
+| ![](Results/input2.jpg) | ![](Results/grayscale2.png) | ![](Results/colorized2.png) |
 
 ### Example 3
 
 | Original | Grayscale | Colorized |
 |:--------:|:---------:|:------------------------:|
-| ![](assets/original3.jpg) | ![](assets/grayscale3.jpg) | ![](assets/colorized3.jpg) |
+| ![](Results/input3.jpg) | ![](Results/grayscale3.png) | ![](Results/colorized3.png) |
