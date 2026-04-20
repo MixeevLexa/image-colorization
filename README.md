@@ -40,10 +40,9 @@ Install the required modules
 pip install -r requirements.txt
 ```
 
-Run `color.py` with any grayscale image
+Run `color.py` with grayscale image that needs to color
 
 ```bash
-python color.py --image path/to/your_grayscale_image.jpg --model models/model.pth --output colorized_image.jpg
-```
+python color.py --image path/to/your_grayscale_image.jpg
 
 ## Results
