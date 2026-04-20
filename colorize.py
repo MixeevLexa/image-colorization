@@ -84,12 +84,12 @@ def colorize_image(image_path: str, model_path: str = "model.pth", output_path: 
     rgb_resized = cv2.resize(rgb, original_size, interpolation=cv2.INTER_LINEAR)
 
     # Save result
-    output_path_colorized = "./colorized.png"
+    output_path_colorized = "colorized.png"
     cv2.imwrite(output_path_colorized, cv2.cvtColor(rgb_resized, cv2.COLOR_RGB2BGR))
     print(f"Colorized image saved to: {output_path_colorized}")
 
     # Save grayscale version for comparison
-    output_path_grayscale = "./grayscale.png"
+    output_path_grayscale = "grayscale.png"
     if len(img.shape) == 3:
         grayscale_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     else:
