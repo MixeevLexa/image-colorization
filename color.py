@@ -6,13 +6,13 @@ from skimage.color import lab2rgb, rgb2gray
 from PIL import Image
 import os
 
-def colorize_image(model_path: str, image_path: str, output_path: str = "colorized.jpg"):
+def colorize_image(image_path: str, model_path: str = "model.pth", output_path: str = "colorized.jpg"):
     """
     Colorize a grayscale image using the trained model.
     
     Args:
-        model_path (str): Path to the trained model weights (.pth file).
         image_path (str): Path to the input image.
+        model_path (str): Path to the trained model weights (.pth file).
         output_path (str): Path where the colorized image will be saved.
     
     Returns:
@@ -48,7 +48,7 @@ def colorize_image(model_path: str, image_path: str, output_path: str = "coloriz
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Colorize a grayscale image using trained CNN model")
     parser.add_argument("--image", type=str, required=True, help="Path to the input grayscale image")
-    parser.add_argument("--model", type=str, default="models/model.pth", help="Path to the trained model weights")
+    parser.add_argument("--model", type=str, default="model.pth", help="Path to the trained model weights")
     parser.add_argument("--output", type=str, default="colorized.jpg", help="Output path for the colorized image")
     
     args = parser.parse_args()
