@@ -84,26 +84,25 @@ def colorize_image(image_path: str, model_path: str = "model.pth", output_path: 
     rgb_resized = cv2.resize(rgb, original_size, interpolation=cv2.INTER_LINEAR)
 
     # Save result
-    cv2.imwrite(output_path, cv2.cvtColor(rgb_resized, cv2.COLOR_RGB2BGR))
-    print(f"Colorized image saved to: {output_path}")
+    output_path_colorized = "./colorized.png"
+    cv2.imwrite(output_path_colorized, cv2.cvtColor(rgb_resized, cv2.COLOR_RGB2BGR))
+    print(f"Colorized image saved to: {output_path_colorized}")
 
     # Save grayscale version for comparison
-    base, ext = os.path.splitext(output_path)
-    bw_output_path = f"{base}_bw{ext}"
+    output_path_grayscale = "./grayscale.png"
     if len(img.shape) == 3:
-        bw_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        grayscale_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     else:
-        bw_image = img
-    cv2.imwrite(bw_output_path, bw_image)
-    print(f"Black and white image saved to: {bw_output_path}")
+        grayscale_image = img
+    cv2.imwrite(output_path_grayscale, bw_image)
+    print(f"Grayscale image saved to: {output_path_grayscale}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Colorize image using trained colorization model")
     parser.add_argument("--image",  type=str, required=True,  help="Path to input image")
     parser.add_argument("--model",  type=str, default="model.pth", help="Path to model weights")
-    parser.add_argument("--output", type=str, default="colorized.jpg",    help="Output image path")
     
     args = parser.parse_args()
     
-    colorize_image(args.image, args.model, args.output)
+    colorize_image(args.image, args.model)
