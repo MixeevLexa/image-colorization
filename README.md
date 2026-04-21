@@ -1,7 +1,7 @@
 # Image Colorization
 
 ## Overview
-This project implements automatic colorization of grayscale images using a convolutional neural network. The model takes a single lightness channel as input and predicts the missing color information in LAB color space, producing a plausible full-color version of the original image.
+This project implements automatic colorization of grayscale images using a convolutional neural network. The model takes a single brightness channel as input and predicts the missing color information in LAB color space, producing a plausible full-color version of the original image.
 
 ## Requirements
 
