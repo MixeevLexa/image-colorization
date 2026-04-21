@@ -16,7 +16,7 @@ This project implements automatic colorization of grayscale images using a convo
 
 ### Color Space Conversion
 Images are processed in the **LAB** color space:
-- **L** channel (Lightness) serves as the input to the network, representing the grayscale image.
+- **L** channel (brightness) serves as the input to the network, representing the grayscale image.
 - **A** and **B** channels (chrominance) are predicted by the model.
 - At inference, the predicted AB channels are merged with the original L channel and converted back to RGB.
 
